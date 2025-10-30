@@ -25,32 +25,36 @@ Setup Instructions
 - Node.js & npm
 
 ### Installation
-```bash
+
+# Clone the repository
 git clone https://github.com/nousheedkasim/interview-task-nousheed.git
-cd GPCA
+cd interview-task-nousheed
+
+# Install dependencies
 composer install
 npm install
 npm run dev
+
+# Copy the environment file
 copy .env.example .env
-php artisan key:generate
-php artisan migrate --seed
-php artisan serve
 
+### Configure the Environment (.env file)
 
-Database Setup
---------------
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306   # Change if your MySQL runs on a different port
 DB_DATABASE=gpca
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=''
 
-Migration and Seeder
---------------------
+### Generate App Key & Run Migrations
+
+php artisan key:generate
 php artisan migrate --seed
 
+### Start the Development Server
+php artisan serve
 
-Run Project
------------
-php artisan serve  -  http://127.0.0.1:8000
 
 
 Login Credentials
