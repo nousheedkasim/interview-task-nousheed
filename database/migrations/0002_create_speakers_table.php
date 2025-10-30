@@ -8,11 +8,12 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('speakers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->id(); // bigint unsigned NOT NULL
+            $table->foreignId('event_id')->constrained('events')->cascadeOnDelete(); // FK to events.id
             $table->string('name');
             $table->string('expertise')->nullable();
-            $table->timestamps();
+            $table->unsignedTinyInteger('status')->default(1)->comment('0 = inactive, 1 = active');
+            $table->timestamps(); // created_at and updated_at
         });
     }
 

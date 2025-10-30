@@ -28,10 +28,13 @@ Setup Instructions
 ```bash
 git clone https://github.com/nousheedkasim/interview-task-nousheed.git
 cd GPCA
-cp .env.example .env
 composer install
+npm install
+npm run dev
+copy .env.example .env
 php artisan key:generate
-
+php artisan migrate --seed
+php artisan serve
 
 
 Database Setup

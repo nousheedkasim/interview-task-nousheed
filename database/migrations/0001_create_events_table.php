@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('description');
             $table->string('location');
+			$table->unsignedTinyInteger('status')->default(1)->comment('0 = inactive, 1 = active');
             $table->date('date')->nullable();
             $table->timestamps();
         });
