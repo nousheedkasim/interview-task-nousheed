@@ -8,12 +8,18 @@ use App\Models\Speaker;
 
 class DashboardController extends Controller
 {
+    /**
+     * Display dashboard with key statistics.
+     */
     public function dashboard()
     {
-        $eventCount = Event::count();
-        $sessionCount = EventSession::where('status', 1)->count(); // optional: count only active
-        $speakerCount = Speaker::count();
+        // fetch Count total number of active records
 
+        $eventCount = Event::active()->count();        
+        $sessionCount = EventSession::active()->count();
+        $speakerCount = Speaker::active()->count();
+
+        // Pass data to the dashboard view
         return view('dashboard.dashboard', compact('eventCount', 'sessionCount', 'speakerCount'));
     }
 }

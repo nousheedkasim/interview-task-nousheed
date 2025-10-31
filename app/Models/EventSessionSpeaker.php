@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class EventSessionSpeaker extends Model
 {
     use HasFactory;
-    protected $table = 'event_session_speaker'; // <-- your actual table name
+    protected $table = 'event_session_speaker'; // actual table name
+    
+    // Allow mass assignment for these attributes
     protected $fillable = [
         'event_id',
         'event_session_id',
@@ -24,7 +26,7 @@ class EventSessionSpeaker extends Model
 
     public function session()
     {
-        //return $this->belongsTo(EventSession::class);
+    
         return $this->belongsTo(EventSession::class, 'event_session_id');
     }
 

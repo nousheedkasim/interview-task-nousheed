@@ -10,6 +10,7 @@ class Speaker extends Model
 {
     use HasFactory;
 
+    // Allow mass assignment for these attributes
     protected $fillable = [
         'event_id',
         'name',
@@ -22,6 +23,7 @@ class Speaker extends Model
         return $query->where('status', 1);
     }
 
+    // relationship: each speaker belongs to an event
     public function event()
     {
         return $this->belongsTo(Event::class);

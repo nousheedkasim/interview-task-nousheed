@@ -22,7 +22,7 @@ class EventSession extends Model
         'status',
     ];
 
-    // Example relationship: each session belongs to an event
+    // relationship: each session belongs to an event
     public function event()
     {
         return $this->belongsTo(Event::class);
@@ -40,20 +40,25 @@ class EventSession extends Model
         return $query->where('status', 1);
     }
 
+    // formating time using Accessor while fetch data
     public function getStartTimeAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
     }
 
+    // formating time using Accessor while fetch data
     public function getEndTimeAttribute($value)
     {
         return \Carbon\Carbon::createFromFormat('H:i:s', $value)->format('g:i A');
     }
+
+    // formating time using Mutator while storing data
     public function setStartTimeAttribute($value)
     {
         $this->attributes['start_time'] = Carbon::parse($value)->format('H:i:s');
     }
 
+    // formating time using Mutator while storing data
     public function setEndTimeAttribute($value)
     {
         $this->attributes['end_time'] = Carbon::parse($value)->format('H:i:s');
